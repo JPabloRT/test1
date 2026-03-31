@@ -1,0 +1,902 @@
+/*-------------------------------------------------*/
+/* Colores */
+:root {
+  --primary-color: #001027;
+  --text-color: #333;
+}
+
+/*-------------------------------------------------*/
+/* Encabezado */
+
+.header {
+  color: white;
+  padding: 2rem;
+  position: relative;
+  min-height: 38em;
+  overflow: hidden;
+  background-image: url(../content/img/img_s6.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 16, 39, 0.87);
+  z-index: 1;
+}
+
+.header h1 {
+  font-size: clamp(4.2rem, 7vw, 6.4rem);
+  margin-top: 11rem;
+  font-weight: 500;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  gap: 3rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 6rem;
+  font-size: 1.6rem;
+  padding-right: 3rem;
+  padding-left: 0;
+}
+
+.logoNTEC {
+  filter: brightness(0) invert(1);
+  width: 20em;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+/*-------------------------------------------------*/
+/* Main */
+
+.our-values {
+  width: min(112rem, calc(100% - 3.2rem));
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding-top: 1rem;
+  align-items: center;
+  text-align: center;
+}
+
+.values-container {
+  margin-top: 2rem;
+  display: flex;
+  gap: 4rem;
+  min-height: 0;
+  align-items: stretch;
+  width: 100%;
+  justify-content: center;
+}
+
+.values-container h3 {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+.values-container p {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+.img-ntec {
+  width: min(100%, 34em);
+  height: auto;
+  margin: 0 auto;
+  opacity: 0.92;
+}
+
+.values-column-img {
+  width: min(100%, 34rem);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.values-column-img img {
+  width: min(100%, 371px);
+  height: auto;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.values-column-img-box {
+  width: 300px;
+  height: 534px;
+  background-color: #001027;
+  position: relative;
+  transform: translate(40%, -92%);
+  z-index: 0;
+}
+
+.values-column-text {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.values-item {
+  width: 100%;
+  max-width: 30rem;
+  padding: 2rem 1.8rem;
+  border: 1px solid rgba(0, 16, 39, 0.08);
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  box-shadow: 0 18px 38px rgba(0, 16, 39, 0.06);
+}
+
+.values-item svg {
+  margin-bottom: 1.8rem;
+}
+
+.values-item h3 {
+  margin-bottom: 1.2rem;
+  color: var(--primary-color);
+  line-height: 1.1;
+}
+
+.btn-contact-us {
+  margin: 3rem auto 0;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 6rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 2rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.our-accreditations {
+  margin-top: 2rem;
+  display: flex;
+  padding: 4.8rem;
+  justify-content: center;
+  align-items: center;
+  gap: 3.2rem;
+  position: relative;
+  background-image: url(../content/img/img_s9.jpg);
+  background-position: 50% 90%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.our-accreditations::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 16, 39, 0.84);
+  z-index: 1;
+}
+
+.our-accreditations h2 {
+  z-index: 2;
+  color: #fff;
+  font-weight: 300;
+  align-self: center;
+  width: min(100%, 40rem);
+  padding: 0;
+  line-height: 1.08;
+  text-align: left;
+}
+
+.accreditations-container {
+  z-index: 2;
+  width: min(100%, 76rem);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2.4rem;
+  row-gap: 2.4rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.accreditation-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 23rem;
+  padding: 2.8rem 2.2rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(4px);
+}
+
+.accreditation-item p {
+  color: #fff;
+  font-size: 2.1rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 1.4rem 0 1.8rem;
+}
+
+.btn-read {
+  background-color: #006ef3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  padding: 0.5rem 4rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.our-catalog {
+  width: min(112rem, calc(100% - 3.2rem));
+  margin: 5rem auto 0;
+  text-align: center;
+  position: relative;
+}
+
+.our-catalog h2 {
+  width: min(840px, 100%);
+  margin: 0 auto 1.6rem;
+  position: relative;
+  z-index: 7;
+  top: auto;
+  left: auto;
+  transform: none;
+}
+
+.circle-carousel-top {
+  width: 102%;
+  height: 180px;
+  border-bottom-left-radius: 50% 100%;
+  border-bottom-right-radius: 50% 100%;
+  background: #fff;
+  position: absolute;
+  z-index: 6;
+}
+
+.circle-carousel-bottom {
+  width: 102%;
+  height: 180px;
+  border-top-left-radius: 50% 100%;
+  border-top-right-radius: 50% 100%;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  z-index: 6;
+}
+
+.catalog-carousel {
+  --catalog-card-width: clamp(240px, 27vw, 360px);
+  --catalog-side-gap: 26px;
+  --catalog-side-offset: calc(
+    var(--catalog-card-width) + var(--catalog-side-gap)
+  );
+  --catalog-side-rotate: 26deg;
+  position: relative;
+  overflow: hidden;
+  padding: 0 5rem 0.4rem;
+  perspective: 1500px;
+  width: 100%;
+}
+
+.catalog-track {
+  position: relative;
+  overflow: hidden;
+  height: 58rem;
+  padding: 1rem 0;
+}
+
+.catalog-card {
+  position: absolute;
+  top: 2.2rem;
+  left: 50%;
+  width: var(--catalog-card-width);
+  height: calc(100% - 4.4rem);
+  display: flex;
+  cursor: pointer;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition:
+    transform 430ms cubic-bezier(0.22, 0.8, 0.24, 1),
+    opacity 360ms ease,
+    filter 360ms ease;
+  will-change: transform, opacity;
+}
+
+.catalog-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.catalog-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 16, 39, 0.02) 0%,
+    rgba(0, 16, 39, 0.12) 100%
+  );
+}
+
+.catalog-card.is-active {
+  transform: translate(-50%, 0) rotateY(0deg) scale(1.01);
+  opacity: 1;
+  filter: none;
+  z-index: 4;
+}
+
+.catalog-info {
+  position: absolute;
+  width: min(640px, 92%);
+  top: 84%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 7;
+  padding: 2rem 2.6rem 2.2rem;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 20px 45px rgba(0, 16, 39, 0.08);
+}
+
+.catalog-info h3 {
+  font-size: 3.2rem;
+  margin-bottom: 1.4rem;
+}
+
+.catalog-description {
+  width: min(100%, 52rem);
+  margin: 0 auto;
+  font-size: 1.6rem;
+  line-height: 1.45;
+}
+
+.catalog-card.is-left,
+.catalog-card.is-right {
+  opacity: 0.72;
+  filter: saturate(0.72);
+  z-index: 3;
+}
+
+.catalog-card.is-left {
+  transform: translate(calc(-50% - var(--catalog-side-offset)), 0)
+    rotateY(var(--catalog-side-rotate)) scale(0.86);
+}
+
+.catalog-card.is-right {
+  transform: translate(calc(-50% + var(--catalog-side-offset)), 0)
+    rotateY(calc(var(--catalog-side-rotate) * -1)) scale(0.86);
+}
+
+.catalog-card.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0) rotateY(0deg) scale(0.8);
+  z-index: 1;
+}
+
+.catalog-btn {
+  display: inline-flex;
+  margin-top: 2rem;
+  padding: 1rem 4.2rem;
+  border-radius: 999px;
+  background-color: #001d49;
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.catalog-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 23, 55, 0.85);
+  color: #fff;
+  font-size: 2.2rem;
+  cursor: pointer;
+  box-shadow: 0 10px 18px rgba(0, 16, 39, 0.18);
+}
+
+.catalog-control-prev {
+  left: 0.4rem;
+}
+
+.catalog-control-next {
+  right: 0.4rem;
+}
+
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  margin-top: 9rem;
+  margin-bottom: 7rem;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+.testimonials h2 {
+  font-size: 3.2rem;
+  padding-left: 0;
+  text-align: center;
+}
+
+.testimonial {
+  display: grid;
+  grid-template-columns: 28rem 1fr;
+  align-items: center;
+  gap: 3.2rem;
+  width: min(96rem, 100%);
+  margin: 0 auto;
+  padding: 3rem 3.2rem;
+  background: linear-gradient(135deg, #001635 0%, #00295f 100%);
+  box-shadow: 0 22px 48px rgba(0, 16, 39, 0.12);
+}
+
+.testimonial-space {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28rem;
+}
+
+.testimonial img {
+  width: 22rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.circle {
+  width: 26rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.testimonial-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.testimonial-text h3,
+.testimonial p {
+  color: #fff;
+}
+
+.testimonial-text h3 {
+  font-size: 2.8rem;
+  font-weight: 500;
+  font-family: "DM Serif Text", serif;
+}
+
+.testimonial-text p {
+  font-size: 1.6rem;
+  font-weight: 300;
+  font-family: "DM Sans", sans-serif;
+  max-width: 52rem;
+}
+
+.testimonial-text p:first-of-type {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.8;
+}
+
+.testimonial-text p:last-of-type {
+  font-size: 1.8rem;
+  line-height: 1.7;
+}
+
+/*-------------------------------------------------*/
+/* Footer */
+
+footer {
+  margin-top: 8rem;
+  background-image: url(../content/img/image_s11.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 2rem;
+  font-family: "DM Sans", sans-serif;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 16, 39, 0.8);
+  z-index: 1;
+}
+
+.footer-copyright {
+  position: relative;
+  color: #fff;
+  z-index: 2;
+  margin-top: 7rem;
+  text-align: right;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 3rem;
+}
+
+.footer-enterprise {
+  flex: 1;
+  padding-left: 3.5rem;
+}
+
+.contact-links {
+  padding-left: 2rem;
+}
+
+.contact-links ul {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-enterprise h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 200;
+  padding-left: 2rem;
+}
+
+.footer-links {
+  flex: 2;
+}
+
+.logoNTEC-footer {
+  width: 35em;
+  display: block;
+  filter: brightness(0) invert(1);
+  position: relative;
+}
+
+.footer-links h4 {
+  color: #fff;
+  font-weight: 300;
+  font-size: 1.6rem;
+}
+
+.footer-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  list-style: none;
+  padding-left: 2rem;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 100;
+}
+
+/*-------------------------------------------------*/
+/* Responsive */
+
+@media (max-width: 980px) {
+  .nav-links {
+    gap: 2.4rem;
+    padding-right: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .values-container {
+    gap: 2.4rem;
+    min-height: 0;
+  }
+
+  .values-column-text {
+    padding: 0;
+  }
+
+  .our-accreditations {
+    padding: 4rem 3rem;
+  }
+
+  .our-accreditations h2 {
+    width: 100%;
+    padding: 0;
+  }
+
+  .accreditations-container {
+    padding: 0;
+  }
+
+  .catalog-carousel {
+    --catalog-card-width: clamp(200px, 29vw, 290px);
+    --catalog-side-gap: 18px;
+    --catalog-side-rotate: 20deg;
+    padding: 1rem 4rem 2rem;
+  }
+
+  .catalog-track {
+    height: 50rem;
+  }
+
+  .catalog-info {
+    width: min(620px, 94%);
+  }
+
+  .testimonial {
+    grid-template-columns: 24rem 1fr;
+    gap: 2.8rem;
+    padding: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    min-height: auto;
+    padding: 2rem 1.6rem 4rem;
+  }
+
+  .header h1 {
+    margin-top: 6rem;
+  }
+
+  .main-nav,
+  .footer-content,
+  .our-accreditations,
+  .testimonial {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.4rem;
+    font-size: 1.5rem;
+  }
+
+  .our-values,
+  .our-catalog {
+    width: min(100%, calc(100% - 3.2rem));
+  }
+
+  .values-container {
+    margin-top: 1.8rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .values-column-text {
+    width: 100%;
+    padding: 0;
+  }
+
+  .values-item {
+    max-width: none;
+  }
+
+  .values-column-img {
+    order: -1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .values-column-img-box {
+    display: none;
+  }
+
+  .btn-contact-us {
+    width: 100%;
+    padding: 1.4rem 2rem;
+  }
+
+  .our-accreditations {
+    gap: 2.4rem;
+    text-align: center;
+  }
+
+  .our-accreditations h2 {
+    text-align: center;
+  }
+
+  .accreditations-container {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .accreditation-item p {
+    text-align: center;
+  }
+
+  .our-catalog h2 {
+    margin-bottom: 1.6rem;
+  }
+
+  .circle-carousel-top,
+  .circle-carousel-bottom {
+    display: none;
+  }
+
+  .catalog-carousel {
+    --catalog-card-width: clamp(165px, 30vw, 220px);
+    --catalog-side-gap: 12px;
+    --catalog-side-rotate: 14deg;
+    padding: 1rem 0 2rem;
+  }
+
+  .catalog-track {
+    height: 38rem;
+  }
+
+  .catalog-info {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-top: 0;
+    padding: 1.6rem 1rem 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .catalog-description {
+    width: 100%;
+  }
+
+  .catalog-btn {
+    font-size: 1.7rem;
+    padding: 0.9rem 3.2rem;
+  }
+
+  .testimonials {
+    margin: 8rem 0;
+  }
+
+  .testimonials h2 {
+    padding-left: 0;
+    margin-bottom: 3rem;
+  }
+
+  .testimonial {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: 2.4rem 2rem;
+    gap: 1.6rem;
+  }
+
+  .testimonial-space {
+    min-height: 30rem;
+    width: 100%;
+  }
+
+  .testimonial-text {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .testimonial-text p {
+    max-width: none;
+  }
+
+  .footer-enterprise,
+  .contact-links,
+  .footer-links ul {
+    padding-left: 0;
+  }
+
+  .footer-enterprise h3,
+  .footer-links h4 {
+    padding-left: 0;
+  }
+
+  .logoNTEC,
+  .logoNTEC-footer {
+    width: 22rem;
+  }
+
+  .footer-copyright {
+    margin-top: 4rem;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 3.8rem;
+  }
+
+  .our-values {
+    gap: 2.4rem;
+  }
+
+  .our-accreditations {
+    padding: 2.8rem 2rem;
+  }
+
+  .accreditation-item {
+    min-height: 0;
+  }
+
+  .catalog-track {
+    height: 30rem;
+  }
+
+  .catalog-control {
+    top: auto;
+    bottom: -5.4rem;
+    transform: none;
+  }
+
+  .catalog-info {
+    padding: 1.2rem 0.6rem 0;
+  }
+
+  .catalog-info h3 {
+    font-size: 2.8rem;
+  }
+
+  .testimonial {
+    padding: 2.2rem 1.6rem;
+  }
+
+  .testimonial-space {
+    min-height: 24rem;
+  }
+
+  .testimonial img {
+    width: 18rem;
+  }
+
+  .circle {
+    width: 21rem;
+  }
+}
