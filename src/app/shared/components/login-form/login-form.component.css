@@ -1,0 +1,15 @@
+@import '../../../../styles/legacy/clients-page.css';
+
+.form-message {
+  margin: 0.8rem 0 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.form-error {
+  color: #b42318;
+}
+
+.form-success {
+  color: #0d7a42;
+}

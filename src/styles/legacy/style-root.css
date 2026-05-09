@@ -1,0 +1,83 @@
+/*-------------------------------------------------*/
+/* Colores */
+:root {
+  --primary-color: #001027;
+  --text-color: #333;
+}
+
+/*-------------------------------------------------*/
+/* Elementos basicos */
+
+html {
+  /*10 px = 1rem*/
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fdfdfd, #ffffff);
+  font-family: "DM Sans", sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-family: "DM Serif Text", serif;
+  font-size: 4.8rem;
+}
+
+h2 {
+  font-family: "DM Serif Text", serif;
+  font-size: 3.6rem;
+  line-height: 1.1;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.8rem;
+  color: var(--text-color);
+}
+
+li,
+span,
+label,
+input,
+textarea,
+button {
+  font-family: "DM Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(23, 37, 61, 0.62);
+}
+
+/*-------------------------------------------------*/

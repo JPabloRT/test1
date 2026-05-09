@@ -1,0 +1,722 @@
+@if (loading()) {
+  <main class="portal-shell portal-loading-shell">
+    <section class="portal-loading-card">
+      <p class="eyebrow">Portal de clientes</p>
+      <h1>Estamos preparando tu panel</h1>
+      <p>
+        Cargamos la información vinculada a tu cuenta para mostrar empresas,
+        solicitudes, documentos y alertas.
+      </p>
+    </section>
+  </main>
+} @else {
+  @if (client(); as currentClient) {
+    <main class="portal-shell">
+      <aside class="portal-sidebar">
+        <div class="sidebar-profile">
+          <div class="sidebar-avatar">{{ clientInitials() || 'CL' }}</div>
+          <h2>{{ portalUserName() }}</h2>
+          <p>{{ portalUserEmail() }}</p>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Navegación del portal">
+          <button
+            type="button"
+            class="sidebar-link"
+            [class.is-active]="activeSidebarView() === 'companies'"
+            (click)="openCompaniesList()"
+          >
+            <span class="sidebar-link-icon">⌂</span>
+            <span>Empresas</span>
+          </button>
+
+          <button
+            type="button"
+            class="sidebar-link"
+            [class.is-active]="activeSidebarView() === 'alerts'"
+            (click)="openAlerts()"
+          >
+            <span class="sidebar-link-icon">◉</span>
+            <span>Alertas</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-brand">
+          <img src="content/img/logo_ntec.svg" alt="Normalitec" />
+          <p>Normalitec customer portal</p>
+        </div>
+
+        <button type="button" class="sidebar-logout" (click)="logout()">
+          <span>↩</span>
+          <span>Cerrar Sesión</span>
+        </button>
+      </aside>
+
+      <section class="portal-workspace">
+        <header class="workspace-topbar">
+          <p class="workspace-breadcrumb">
+            @for (crumb of breadcrumb(); track crumb; let last = $last) {
+              <span>{{ crumb }}</span>
+              @if (!last) {
+                <span class="crumb-separator">›</span>
+              }
+            }
+          </p>
+
+          <button type="button" class="support-button">
+            <span>⌁</span>
+            <span>Soporte</span>
+          </button>
+        </header>
+
+        @if (activeSidebarView() === 'companies') {
+          @if (currentScreen() === 'companies-list') {
+            <section class="workspace-section companies-view">
+              <div class="section-headline section-headline-centered">
+                <h1>Empresas</h1>
+              </div>
+
+              <div class="section-toolbar-line"></div>
+
+              <div class="section-headline-actions section-headline-actions-end">
+                <span class="state-chip state-chip-success">Activas</span>
+                <button type="button" class="toolbar-button">
+                  <span>⌄</span>
+                  <span>Filtros</span>
+                </button>
+              </div>
+
+              <p class="section-count">{{ companies().length }} Empresas</p>
+
+              <div class="companies-grid">
+                @for (company of companies(); track company.id) {
+                  <button type="button" class="company-tile" (click)="openCompanyServices()">
+                    <div class="tile-illustration">
+                      <div class="building-stack">
+                        <span class="tower tower-left"></span>
+                        <span class="tower tower-center"></span>
+                        <span class="tower tower-right"></span>
+                      </div>
+                    </div>
+                    <div class="tile-footer" [class]="'accent-' + company.accent">
+                      <h2>{{ company.name }}</h2>
+                      <p>{{ company.subtitle }}</p>
+                      <strong>{{ company.generatedServices }} Servicios generados</strong>
+                    </div>
+                  </button>
+                }
+
+                <button type="button" class="company-tile company-tile-add">
+                  <span class="add-circle">+</span>
+                  <h2>Agregar empresa</h2>
+                </button>
+              </div>
+            </section>
+          } @else {
+            <section class="workspace-section company-area">
+              <div class="company-top">
+                <div class="company-badge">
+                  <div class="building-stack">
+                    <span class="tower tower-left"></span>
+                    <span class="tower tower-center"></span>
+                    <span class="tower tower-right"></span>
+                  </div>
+                </div>
+                <h1>{{ companyNameUpper() }}</h1>
+              </div>
+
+              <nav class="company-tabs" aria-label="Secciones de la empresa">
+                <button
+                  type="button"
+                  class="company-tab"
+                  [class.is-active]="activeCompanyTab() === 'services'"
+                  (click)="openCompanyServices()"
+                >
+                  Servicios
+                </button>
+                <button
+                  type="button"
+                  class="company-tab"
+                  [class.is-active]="activeCompanyTab() === 'profile'"
+                  (click)="openCompanyProfile()"
+                >
+                  Perfil
+                </button>
+                <button
+                  type="button"
+                  class="company-tab"
+                  [class.is-active]="activeCompanyTab() === 'users'"
+                  (click)="openCompanyUsers()"
+                >
+                  Usuarios
+                </button>
+              </nav>
+
+              @if (currentScreen() === 'services-list') {
+                <section class="services-dashboard">
+                  <aside class="services-kpi-column">
+                    <article class="metric-card">
+                      <span>Total Solicitudes</span>
+                      <strong>{{ totalRequests() }}</strong>
+                      <small>+{{ inProgressRequests() }} activas</small>
+                    </article>
+
+                    <article class="metric-card">
+                      <span>En Proceso</span>
+                      <strong>{{ inProgressRequests() }}</strong>
+                      <small>A tiempo</small>
+                    </article>
+
+                    <article class="metric-card">
+                      <span>Completadas</span>
+                      <strong>{{ completedRequests() }}</strong>
+                      <small>Total histórico</small>
+                    </article>
+                  </aside>
+
+                  <div class="services-main-column">
+                    <article class="panel-card table-panel">
+                      <div class="panel-toolbar">
+                        <div class="panel-toolbar-copy">
+                          <h2>Servicios y Certificaciones</h2>
+                        </div>
+
+                        <div class="panel-toolbar-actions">
+                          <label class="search-control">
+                            <span>⌕</span>
+                            <input
+                              type="text"
+                              value=""
+                              placeholder="Buscar por producto o solicitud..."
+                            />
+                          </label>
+                          <button type="button" class="icon-button">⋯</button>
+                        </div>
+                      </div>
+
+                      @if (hasRequests()) {
+                        <div class="data-table">
+                          <div class="data-table-head services-grid">
+                            <span>Tipo</span>
+                            <span>Producto</span>
+                            <span>Norma oficial</span>
+                            <span>No. solicitud</span>
+                            <span>No. documento</span>
+                            <span>Estatus</span>
+                            <span>Acciones</span>
+                          </div>
+
+                          @for (request of requests(); track request.id) {
+                            <button
+                              type="button"
+                              class="data-table-row services-grid"
+                              (click)="openServiceDetail(request)"
+                            >
+                              <span>{{ request.service }}</span>
+                              <span>{{ request.documentType }}</span>
+                              <span>NOM-001-SCFI-2018</span>
+                              <span>{{ request.id }}</span>
+                              <span>{{ request.documentId }}</span>
+                              <span>
+                                <span class="status-pill" [class]="getStatusTone(request.status)">
+                                  {{ request.status }}
+                                </span>
+                              </span>
+                              <span class="action-link">Ver detalles</span>
+                            </button>
+                          }
+                        </div>
+                      } @else {
+                        <p class="empty-state-copy">Aún no hay servicios vinculados a esta empresa.</p>
+                      }
+                    </article>
+
+                    <button type="button" class="cta-banner" (click)="openServiceCreate()">
+                      <span class="cta-banner-icon">+</span>
+                      <span>Solicitar un nuevo servicio</span>
+                    </button>
+                  </div>
+                </section>
+              }
+
+              @if (currentScreen() === 'service-detail') {
+                @if (selectedRequest(); as request) {
+                  <section class="service-detail-page">
+                    <div class="detail-main">
+                      <article class="panel-card document-viewer-card">
+                        <div class="panel-title-row">
+                          <h2>Visualización de Documento</h2>
+                        </div>
+
+                        <div class="document-preview-stage">
+                          <div class="certificate-sheet">
+                            <div class="sheet-banner"></div>
+                            <div class="sheet-body">
+                              <div class="sheet-logo">Normalitec</div>
+                              <div class="sheet-meta">
+                                <p><strong>Documento:</strong> {{ request.documentId }}</p>
+                                <p><strong>Solicitud:</strong> {{ request.id }}</p>
+                                <p><strong>Tipo:</strong> {{ request.service }}</p>
+                                <p><strong>Norma:</strong> NOM-001-SCFI-2018</p>
+                              </div>
+                            </div>
+                            <div class="sheet-footer"></div>
+                          </div>
+                        </div>
+
+                        <button type="button" class="primary-document-button">
+                          Descargar Certificado (PDF)
+                        </button>
+                      </article>
+                    </div>
+
+                    <aside class="detail-side">
+                      <article class="panel-card detail-side-card">
+                        <h2>Detalles del Servicio</h2>
+                        <div class="meta-stack">
+                          <div>
+                            <span class="meta-label">Número de Documento</span>
+                            <strong>{{ request.documentId }}</strong>
+                          </div>
+                          <div>
+                            <span class="meta-label">Tipo de Servicio</span>
+                            <p>{{ request.service }}</p>
+                          </div>
+                          <div>
+                            <span class="meta-label">Número de Solicitud</span>
+                            <p>{{ request.id }}</p>
+                          </div>
+                          <div>
+                            <span class="meta-label">Nombre del Producto</span>
+                            <p>{{ request.documentType }}</p>
+                          </div>
+                          <div>
+                            <span class="meta-label">Norma Oficial</span>
+                            <p>NOM-001-SCFI-2018</p>
+                          </div>
+                          <div>
+                            <span class="meta-label">Estatus del Servicio</span>
+                            <span class="status-pill" [class]="getStatusTone(request.status)">
+                              {{ request.status }}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="version-block">
+                          <div class="version-block-head">
+                            <h3>Versiones del Documento</h3>
+                          </div>
+                          @for (version of documentVersions(); track version.version) {
+                            <div class="version-card">
+                              <div class="version-card-head">
+                                <strong>{{ version.version }}</strong>
+                                <small>{{ version.date }}</small>
+                              </div>
+                              <p>{{ version.note }}</p>
+                            </div>
+                          }
+                        </div>
+                      </article>
+                    </aside>
+                  </section>
+                }
+              }
+
+              @if (currentScreen() === 'service-create') {
+                <section class="service-form-page">
+                  <div class="section-title-compact">
+                    <h2>Nueva Gestión de Servicio</h2>
+                  </div>
+
+                  <article class="panel-card request-banner">
+                    <div>
+                      <h3>Solicitud {{ companies()[0].id }}-{{ totalRequests() + 1 }}</h3>
+                      <p>Fecha de creación: {{ latestExpiry() }}</p>
+                    </div>
+                    <span class="state-chip state-chip-warning">En proceso</span>
+                  </article>
+
+                  <div class="service-top-grid">
+                    <article class="panel-card">
+                      <div class="panel-title-row">
+                        <h2>Tipo de Servicio</h2>
+                      </div>
+
+                      <div class="type-grid">
+                        @for (option of serviceTypeOptions; track option) {
+                          <button
+                            type="button"
+                            class="type-button"
+                            [class.is-selected]="selectedServiceType() === option"
+                            (click)="selectServiceType(option)"
+                          >
+                            {{ option }}
+                          </button>
+                        }
+                      </div>
+                    </article>
+
+                    <article class="panel-card">
+                      <div class="panel-title-row">
+                        <h2>Datos del Cliente</h2>
+                      </div>
+
+                      <div class="form-grid two-columns">
+                        <label>
+                          <span>Razón Social</span>
+                          <input type="text" [value]="companyName()" />
+                        </label>
+                        <label>
+                          <span>RFC</span>
+                          <input type="text" [value]="currentClient.id" />
+                        </label>
+                        <label class="full-span">
+                          <span>Dirección</span>
+                          <input type="text" [value]="clientAddress()" />
+                        </label>
+                        <label>
+                          <span>Teléfono</span>
+                          <input type="text" [value]="clientPhone()" />
+                        </label>
+                        <label>
+                          <span>Correo Electrónico</span>
+                          <input type="text" [value]="clientEmail()" />
+                        </label>
+                      </div>
+                    </article>
+                  </div>
+
+                  <article class="panel-card">
+                    <div class="panel-title-row">
+                      <h2>Datos del Producto</h2>
+                    </div>
+
+                    <div class="form-grid three-columns">
+                      <label>
+                        <span>Nombre del Producto</span>
+                        <input type="text" />
+                      </label>
+                      <label>
+                        <span>Modelo</span>
+                        <input type="text" />
+                      </label>
+                      <label>
+                        <span>País de Origen</span>
+                        <input type="text" />
+                      </label>
+                      <label>
+                        <span>Marca</span>
+                        <input type="text" />
+                      </label>
+                      <label>
+                        <span>Especificaciones</span>
+                        <input type="text" />
+                      </label>
+                      <label>
+                        <span>País de Procedencia</span>
+                        <input type="text" />
+                      </label>
+                    </div>
+                  </article>
+
+                  <div class="service-bottom-grid">
+                    <article class="panel-card">
+                      <div class="panel-title-row">
+                        <h2>Documentos del Cliente</h2>
+                        <button type="button" class="text-link-button">Ver todos</button>
+                      </div>
+
+                      <div class="document-list">
+                        @for (document of documentRows(); track document.id) {
+                          <div class="document-row">
+                            <div class="document-row-icon">▣</div>
+                            <div class="document-row-copy">
+                              <strong>{{ document.id }}</strong>
+                              <span>{{ document.subtitle }}</span>
+                            </div>
+                            <span class="document-row-status">◎</span>
+                          </div>
+                        }
+                      </div>
+                    </article>
+
+                    <article class="panel-card validation-card">
+                      <div class="panel-title-row">
+                        <h2>Validar Documentos</h2>
+                      </div>
+
+                      <div class="validation-box">
+                        <p>
+                          Confirma que los documentos subidos por el cliente cumplen con los
+                          requisitos técnicos y legales para este tipo de servicio.
+                        </p>
+                        <button type="button" class="success-button">Marcar como Válidos</button>
+                        <button type="button" class="outline-button">Solicitar Correcciones</button>
+                      </div>
+                    </article>
+                  </div>
+
+                  <button type="button" class="footer-action-button">
+                    Generar Solicitud de Servicio
+                  </button>
+                </section>
+              }
+
+              @if (currentScreen() === 'profile-main') {
+                <section class="profile-overview-page">
+                  <article class="profile-document-card">
+                      <span class="profile-document-label">Documentación legal</span>
+                      <div class="profile-document-icon">PDF</div>
+                    <h3>Constancia de situación fiscal</h3>
+                    <button type="button" class="secondary-inline-button" (click)="openProfileDocument()">
+                      Ver
+                    </button>
+                    <button type="button" class="secondary-inline-button">
+                      Actualizar
+                    </button>
+                    <p>Estatus: <strong>Aprobada</strong></p>
+                    <p>Comentarios OCP: ninguno</p>
+                  </article>
+
+                  <article class="profile-fields-card">
+                    <div class="profile-field">
+                      <label>Razón social / Nombre</label>
+                      <div>{{ companyNameUpper() }}</div>
+                    </div>
+                    <div class="profile-field">
+                      <label>RFC</label>
+                      <div>{{ currentClient.id }}</div>
+                    </div>
+                    <div class="profile-field">
+                      <label>Domicilio fiscal</label>
+                      <div>{{ clientAddress() }}</div>
+                    </div>
+                    <div class="profile-field">
+                      <label>Giro</label>
+                      <div>Comercial - Operación vinculada al portal</div>
+                    </div>
+                    <div class="profile-field">
+                      <label>Fecha de creación</label>
+                      <div>{{ latestExpiry() }}</div>
+                    </div>
+                  </article>
+                </section>
+              }
+
+              @if (currentScreen() === 'profile-document') {
+                <section class="document-history-page">
+                  <div class="profile-document-header">
+                    <div class="profile-document-header-copy">
+                      <div class="doc-icon-badge">▣</div>
+                      <div>
+                        <h2>Constancia de situación fiscal - {{ companyNameUpper() }}</h2>
+                        <p>Versión seleccionada: v3.0 · {{ latestExpiry() }}</p>
+                      </div>
+                    </div>
+
+                    <div class="profile-document-actions">
+                      <span class="state-chip state-chip-success">Aprobado</span>
+                      <button type="button" class="primary-inline-button">Descargar PDF</button>
+                    </div>
+                  </div>
+
+                  <div class="document-history-layout">
+                    <article class="panel-card history-preview-card">
+                      <div class="history-preview-canvas">
+                        <div class="history-preview-frame">
+                          <div class="history-preview-paper">
+                            <div class="paper-header"></div>
+                            <div class="paper-grid"></div>
+                          </div>
+                        </div>
+                        <p>Vista previa interactiva</p>
+                        <span>Desplázate para ver el contenido completo del documento.</span>
+                      </div>
+                    </article>
+
+                    <aside class="history-sidebar">
+                      <article class="panel-card">
+                        <div class="history-aside-head">
+                          <h3>Historial</h3>
+                          <span>{{ documentVersions().length }} versiones</span>
+                        </div>
+
+                        <div class="version-timeline">
+                          @for (version of documentVersions(); track version.version) {
+                            <div class="version-timeline-item">
+                              <span class="version-badge">{{ version.version }}</span>
+                              <strong>{{ version.author }}</strong>
+                              <small>{{ version.date }}</small>
+                            </div>
+                          }
+                        </div>
+                      </article>
+
+                      <article class="panel-card">
+                        <div class="history-aside-head">
+                          <h3>Comentarios</h3>
+                        </div>
+
+                        <div class="comment-thread">
+                          @for (comment of documentComments(); track comment.id) {
+                            <div class="comment-card">
+                              <div class="comment-card-head">
+                                <strong>{{ comment.author }}</strong>
+                                <small>{{ comment.time }}</small>
+                              </div>
+                              <span>{{ comment.role }}</span>
+                              <p>{{ comment.body }}</p>
+                            </div>
+                          }
+                        </div>
+
+                        <button type="button" class="outline-full-button">Nuevo comentario</button>
+                      </article>
+                    </aside>
+                  </div>
+                </section>
+              }
+
+              @if (currentScreen() === 'users-list') {
+                <section class="users-page">
+                  <article class="panel-card">
+                    <div class="panel-toolbar">
+                      <div class="panel-toolbar-copy">
+                        <h2>Gestión de Usuarios</h2>
+                        <p>Administra los accesos y permisos de tu equipo.</p>
+                      </div>
+
+                      <div class="panel-toolbar-actions">
+                        <label class="search-control">
+                          <span>⌕</span>
+                          <input type="text" value="" placeholder="Buscar usuarios..." />
+                        </label>
+                        <button type="button" class="primary-inline-button" (click)="openUsersCreate()">
+                          Nuevo Usuario
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="data-table">
+                      <div class="data-table-head users-grid">
+                        <span>ID (Nombre)</span>
+                        <span>Correo</span>
+                        <span>Rol</span>
+                        <span>Permisos</span>
+                      </div>
+
+                      @for (user of userRows(); track user.email) {
+                        <div class="data-table-row users-grid static-row">
+                          <span>{{ user.id }} - {{ user.name }}</span>
+                          <span>{{ user.email }}</span>
+                          <span>
+                            <span class="role-tag" [class]="getUserRoleTone(user.role)">
+                              {{ user.role }}
+                            </span>
+                          </span>
+                          <span>{{ user.permissions }}</span>
+                        </div>
+                      }
+                    </div>
+                  </article>
+                </section>
+              }
+
+              @if (currentScreen() === 'user-create') {
+                <section class="user-create-page">
+                  <article class="panel-card user-create-card">
+                    <div class="panel-title-row">
+                      <h2>Registrar Nuevo Usuario</h2>
+                    </div>
+                    <p class="panel-subcopy">
+                      Complete la información para dar de alta a un nuevo integrante en el portal.
+                    </p>
+
+                    <div class="form-grid two-columns">
+                      <label>
+                        <span>Nombre completo</span>
+                        <input type="text" placeholder="Ej. Juan Pérez" />
+                      </label>
+                      <label>
+                        <span>Correo electrónico</span>
+                        <input type="email" placeholder="usuario@empresa.com" />
+                      </label>
+                      <label class="full-span">
+                        <span>Rol del usuario</span>
+                        <input type="text" placeholder="Administrador, analista o soporte" />
+                      </label>
+                    </div>
+
+                    <div class="permissions-block">
+                      <h3>Permisos de acceso</h3>
+                      <div class="permissions-grid">
+                        @for (permission of permissionOptions; track permission) {
+                          <label class="permission-tile">
+                            <input type="checkbox" />
+                            <span>{{ permission }}</span>
+                          </label>
+                        }
+                      </div>
+                    </div>
+
+                    <button type="button" class="footer-action-button compact-action">
+                      Registrar Usuario
+                    </button>
+                  </article>
+                </section>
+              }
+            </section>
+          }
+        }
+
+        @if (activeSidebarView() === 'alerts') {
+          <section class="workspace-section alerts-view">
+            <article class="alerts-panel">
+              <h1>Notificaciones</h1>
+              <p>Mantente al tanto con tus últimas notificaciones.</p>
+
+              <div class="alerts-divider"></div>
+
+              @for (group of alertGroups(); track group.title) {
+                <div class="alert-group">
+                  <h2>{{ group.title }}</h2>
+
+                  @for (alert of group.items; track alert.id) {
+                    <div class="alert-item">
+                      <div class="alert-icon" [class]="getAlertToneClass(alert.tone)">
+                        @if (alert.tone === 'success') {
+                          <span>✓</span>
+                        } @else if (alert.tone === 'warning') {
+                          <span>!</span>
+                        } @else {
+                          <span>+</span>
+                        }
+                      </div>
+
+                      <div class="alert-copy">
+                        <strong>{{ alert.title }}</strong>
+                        <p>{{ alert.body }}</p>
+                        <span>{{ alert.date }}</span>
+                      </div>
+                    </div>
+                  }
+                </div>
+              }
+            </article>
+          </section>
+        }
+      </section>
+    </main>
+  } @else {
+    <main class="portal-shell portal-empty-shell">
+      <section class="portal-loading-card">
+        <p class="eyebrow">Sin datos</p>
+        <h1>No encontramos información para este acceso</h1>
+        <p>
+          El usuario inició sesión, pero no encontramos su vinculación en la
+          base del portal.
+        </p>
+      </section>
+    </main>
+  }
+}
