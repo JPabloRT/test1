@@ -1,0 +1,42 @@
+<div class="catalog-carousel" aria-label="Carrusel de sectores">
+  <button
+    type="button"
+    class="catalog-control catalog-control-prev"
+    aria-label="Sector anterior"
+    (click)="previous()"
+  >
+    ❮
+  </button>
+
+  <div class="catalog-track">
+    <article
+      *ngFor="let item of items; let index = index"
+      class="catalog-card"
+      [ngClass]="getCardClass(index)"
+      (click)="activate(index)"
+    >
+      <img [src]="item.image" [alt]="item.alt" />
+
+      <div class="catalog-card-copy">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+        <a
+          *ngIf="index === store.activeIndex()"
+          routerLink="/about"
+          class="btn catalog-inline-btn"
+        >
+          Consultar normas aplicables
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <button
+    type="button"
+    class="catalog-control catalog-control-next"
+    aria-label="Siguiente sector"
+    (click)="next()"
+  >
+    ❯
+  </button>
+</div>

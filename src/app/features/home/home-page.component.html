@@ -1,0 +1,113 @@
+<header class="header">
+  <video autoplay muted loop class="header-video">
+    <source src="content/video/sea_container.mp4" type="video/mp4" />
+    Tu navegador no soporta videos HTML5
+  </video>
+
+  <div class="hero">
+    <app-site-header />
+
+    <section class="hero-section">
+      <h1>Facilita la importación de tus productos con mayor seguridad</h1>
+      <p>
+        Brindamos un servicio ágil, competitivo e imparcial para la
+        certificación de productos bajo diferentes Normas Oficiales Mexicanas.
+      </p>
+      <a routerLink="/contact" class="btn btn-hero">Contáctanos →</a>
+    </section>
+  </div>
+</header>
+
+<main>
+  <section class="about-us">
+    <div class="about-usg-ti">
+      <div class="text-sg text-sg-left">
+        <h2>Nuestro servicio está orientado a darte confianza</h2>
+        <p>
+          El objetivo general de la certificación de productos, procesos o
+          servicios es generar certeza para todas las partes involucradas.
+        </p>
+      </div>
+      <div class="img-sg img-sg-right">
+        <div class="box-s-right"></div>
+        <img
+          src="content/img/img_s1.jpg"
+          alt="Calidad en la certificación de productos"
+        />
+      </div>
+    </div>
+
+    <div class="about-usg-it">
+      <div class="img-sg img-sg-left">
+        <div class="box-s-left"></div>
+        <img
+          src="content/img/img_s2.jpg"
+          alt="Certificación de productos"
+        />
+      </div>
+      <div class="text-sg text-sg-right text-sg-right-2">
+        <h2>Somos un OCP en evolución constante</h2>
+        <p>
+          Contamos con acreditación, aprobaciones normalizadoras y autorización
+          para certificación en materia de telecomunicaciones.
+        </p>
+      </div>
+    </div>
+
+    <div class="about-usg-ti">
+      <div class="text-sg text-sg-left">
+        <h2>Contamos con diferentes líneas de servicio</h2>
+        <p>
+          Emitimos la documentación necesaria para acreditar el cumplimiento
+          normativo de tus productos conforme a la regulación aplicable.
+        </p>
+        <a routerLink="/services" class="btn-s3">Conoce nuestros servicios →</a>
+      </div>
+      <div class="img-sg img-sg-right">
+        <div class="box-s-right"></div>
+        <img
+          src="content/img/img_s3.jpg"
+          alt="Comunicación entre cliente y certificador"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="info">
+    <h2>Garantiza la conformidad de tus productos</h2>
+    <img
+      src="content/img/logo_ntec.svg"
+      alt="Logo Normalitec SC"
+      class="logoNTEC-info"
+    />
+    <div class="stats-container">
+      <div class="stat-item">
+        <h3>+100</h3>
+        <p>Normas acreditadas</p>
+      </div>
+      <div class="stat-item">
+        <h3>+10k</h3>
+        <p>Servicios realizados</p>
+      </div>
+      <div class="stat-item">
+        <h3>+2k</h3>
+        <p>Clientes satisfechos</p>
+      </div>
+    </div>
+    <p>
+      En NORMALITEC, SC, ofrecemos servicios de certificación de productos con
+      base en las Normas Oficiales Mexicanas.
+    </p>
+  </section>
+
+  <section class="nom-catalog">
+    <h2>Catálogo de Normas y Certificaciones Aplicables</h2>
+    <p class="nom-catalog-text">
+      Conoce nuestro catálogo de normas y asegura el cumplimiento que tu
+      producto necesita para ingresar y competir en el mercado.
+    </p>
+    <app-catalog-carousel [items]="catalogItems" />
+  </section>
+</main>
+
+<app-site-footer />

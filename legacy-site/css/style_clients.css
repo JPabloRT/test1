@@ -1,0 +1,469 @@
+/*-------------------------------------------------*/
+/* Colores */
+:root {
+  --primary-color: #001027;
+  --accent-color: #0d5aa7;
+  --surface-color: #f5f7fb;
+  --text-color: #333;
+}
+
+/*-------------------------------------------------*/
+/* Encabezado */
+
+.header {
+  color: white;
+  padding: 2rem 2rem 5rem;
+  position: relative;
+  min-height: 38em;
+  overflow: hidden;
+  background-image: url(../content/img/img_s9.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 16, 39, 0.93),
+    rgba(0, 16, 39, 0.82)
+  );
+  z-index: 1;
+}
+
+.masthead {
+  position: relative;
+  z-index: 2;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+.logoNTEC {
+  filter: brightness(0) invert(1);
+  width: 20em;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 6rem;
+  font-size: 1.6rem;
+  padding-right: 3rem;
+  padding-left: 0;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.hero-copy {
+  width: min(74rem, 100%);
+  margin: 9rem 0 0 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.eyebrow,
+.section-label,
+.login-label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.eyebrow,
+.section-label {
+  color: #76b4ff;
+}
+
+.hero-copy h1 {
+  font-size: clamp(4.2rem, 7vw, 6.2rem);
+  line-height: 1;
+  color: #fff;
+}
+
+.hero-description {
+  font-size: clamp(1.7rem, 2.4vw, 1.9rem);
+  color: rgba(255, 255, 255, 0.86);
+  max-width: 60rem;
+}
+
+/*-------------------------------------------------*/
+/* Main */
+
+main {
+  width: min(116rem, calc(100% - 3.2rem));
+  margin: 7rem auto 0;
+}
+
+.client-access {
+  display: grid;
+  grid-template-columns: 1fr 46rem;
+  gap: 4rem;
+  align-items: center;
+}
+
+.client-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.client-panel h2,
+.login-card h2 {
+  color: var(--primary-color);
+}
+
+.client-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.highlight-card {
+  padding: 2.6rem 2.2rem;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px solid rgba(0, 16, 39, 0.08);
+  box-shadow: 0 18px 35px rgba(0, 16, 39, 0.06);
+}
+
+.highlight-card h3 {
+  font-family: "DM Serif Text", serif;
+  font-size: 2.4rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.login-shell {
+  position: relative;
+}
+
+.login-shell::before {
+  content: "";
+  position: absolute;
+  inset: 1.6rem -1.6rem -1.6rem 1.6rem;
+  background: linear-gradient(180deg, #0f3769, #001027);
+  z-index: 0;
+}
+
+.login-card {
+  position: relative;
+  z-index: 1;
+  padding: 3.2rem;
+  background: #fff;
+  border: 1px solid rgba(0, 16, 39, 0.08);
+  box-shadow: 0 20px 45px rgba(0, 16, 39, 0.08);
+}
+
+.login-label {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.login-copy {
+  margin-bottom: 2.4rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.login-form label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.login-form input {
+  width: 100%;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid rgba(0, 16, 39, 0.14);
+  background: #f9fbfd;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.login-form input:focus {
+  outline: 2px solid rgba(13, 90, 167, 0.22);
+  border-color: rgba(13, 90, 167, 0.4);
+}
+
+.login-row {
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+
+.check-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 500;
+}
+
+.check-row input {
+  width: auto;
+  margin: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 1.5rem 3rem;
+  border: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-primary {
+  width: 100%;
+  margin-top: 1.2rem;
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.login-link {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.login-support {
+  margin-top: 2.4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 16, 39, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/*-------------------------------------------------*/
+/* Footer */
+
+footer {
+  margin-top: 8rem;
+  background-image: url(../content/img/image_s11.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 2rem;
+  font-family: "DM Sans", sans-serif;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 16, 39, 0.8);
+  z-index: 1;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.footer-enterprise {
+  flex: 1;
+  max-width: 48rem;
+  padding-left: 0;
+}
+
+.footer-enterprise h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 200;
+  padding-left: 0;
+  margin-top: 1.2rem;
+}
+
+.contact-links {
+  padding-left: 0;
+  margin-top: 1.8rem;
+}
+
+.contact-links ul {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.footer-link-group {
+  width: min(100%, 24rem);
+}
+
+.footer-links h4 {
+  color: #fff;
+  font-weight: 300;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.footer-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  list-style: none;
+  padding-left: 0;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 100;
+}
+
+.logoNTEC-footer {
+  width: min(100%, 30rem);
+  display: block;
+  filter: brightness(0) invert(1);
+  position: relative;
+}
+
+.footer-copyright {
+  position: relative;
+  color: #fff;
+  z-index: 2;
+  margin-top: 7rem;
+  text-align: right;
+}
+
+/*-------------------------------------------------*/
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: 2.4rem;
+    padding-right: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .client-access {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    min-height: auto;
+    padding: 2rem 1.6rem 4rem;
+  }
+
+  .main-nav,
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.4rem;
+    font-size: 1.5rem;
+  }
+
+  .hero-copy {
+    margin: 4rem 0 0;
+    width: 100%;
+  }
+
+  main {
+    margin-top: 5rem;
+  }
+
+  .client-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .login-shell::before {
+    inset: 1rem -1rem -1rem 1rem;
+  }
+
+  .login-card {
+    padding: 2.6rem 2rem;
+  }
+
+  .login-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-enterprise,
+  .contact-links,
+  .footer-links ul {
+    padding-left: 0;
+  }
+
+  .footer-enterprise h3,
+  .footer-links h4 {
+    padding-left: 0;
+  }
+
+  .footer-links {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .logoNTEC,
+  .logoNTEC-footer {
+    width: 22rem;
+  }
+
+  .footer-copyright {
+    margin-top: 4rem;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-shell::before {
+    display: none;
+  }
+
+  .login-card {
+    padding: 2.2rem 1.6rem;
+  }
+}

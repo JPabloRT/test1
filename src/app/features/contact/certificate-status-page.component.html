@@ -1,0 +1,64 @@
+<header class="contact-header">
+  <div class="contact-shell">
+    <app-site-header />
+
+    <section class="contact-hero certificate-hero">
+      <p class="hero-kicker">Consulta documental</p>
+      <h1>Estatus de un certificado</h1>
+      <p>
+        Para conocer el estatus de vigencia de un certificado, llena el
+        siguiente formulario.
+      </p>
+    </section>
+  </div>
+</header>
+
+<main class="contact-main">
+  <section class="contact-shell">
+    <form class="form-card" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="field-grid">
+        <input type="text" placeholder="Nombre" formControlName="name" />
+        <input type="text" placeholder="Empresa" formControlName="company" />
+        <input type="text" placeholder="Teléfono" formControlName="phone" />
+        <input type="email" placeholder="Email" formControlName="email" />
+        <input
+          type="text"
+          placeholder="Titular del certificado a consultar"
+          formControlName="holder"
+        />
+        <input
+          type="text"
+          placeholder="No. del certificado"
+          formControlName="certificateNumber"
+        />
+        <input
+          type="text"
+          placeholder="Fecha de emisión del certificado"
+          formControlName="issueDate"
+        />
+        <input
+          type="text"
+          placeholder="Norma o disposición técnica certificada"
+          formControlName="standard"
+        />
+        <textarea rows="5" placeholder="Comentarios" formControlName="comments"></textarea>
+      </div>
+
+      @if (error()) {
+        <p class="error-message">{{ error() }}</p>
+      }
+
+      @if (sent()) {
+        <p class="success-message">
+          Tu solicitud fue enviada correctamente al equipo de atención.
+        </p>
+      }
+
+      <button type="submit" class="submit-button" [disabled]="form.invalid || loading()">
+        {{ loading() ? 'Enviando...' : 'Enviar' }}
+      </button>
+    </form>
+  </section>
+</main>
+
+<app-site-footer />

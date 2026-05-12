@@ -1,0 +1,95 @@
+@import '../../../../styles/legacy/about-page.css';
+
+.catalog-card {
+  overflow: hidden;
+}
+
+.catalog-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 16, 39, 0.04) 0%,
+    rgba(0, 16, 39, 0.2) 45%,
+    rgba(0, 16, 39, 0.82) 100%
+  );
+  z-index: 1;
+}
+
+.catalog-card-copy {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2.4rem 2rem 2rem;
+  text-align: left;
+}
+
+.catalog-card-copy h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(2.8rem, 3vw, 4rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.catalog-card-copy p {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.55rem;
+  line-height: 1.35;
+  max-width: 44rem;
+}
+
+.catalog-inline-btn {
+  align-self: flex-start;
+  margin-top: 0.6rem;
+  padding: 1.2rem 2.2rem;
+  background: rgba(20, 28, 45, 0.82);
+  color: #fff;
+  font-size: 1.55rem;
+  font-weight: 700;
+  border-radius: 0;
+}
+
+.catalog-card.is-left .catalog-card-copy,
+.catalog-card.is-right .catalog-card-copy {
+  padding-inline: 1.8rem;
+}
+
+.catalog-card.is-left .catalog-card-copy h3,
+.catalog-card.is-right .catalog-card-copy h3 {
+  font-size: clamp(2rem, 2.4vw, 3rem);
+}
+
+.catalog-card.is-left .catalog-card-copy p,
+.catalog-card.is-right .catalog-card-copy p {
+  font-size: 1.25rem;
+  max-width: 28rem;
+}
+
+.catalog-card.is-left .catalog-inline-btn,
+.catalog-card.is-right .catalog-inline-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .catalog-card-copy {
+    padding: 1.8rem 1.4rem 1.6rem;
+  }
+
+  .catalog-card-copy h3 {
+    font-size: 2.6rem;
+  }
+
+  .catalog-card-copy p {
+    font-size: 1.3rem;
+  }
+
+  .catalog-inline-btn {
+    font-size: 1.3rem;
+    padding: 1rem 1.6rem;
+  }
+}

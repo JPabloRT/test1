@@ -1,0 +1,140 @@
+.contact-header {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(8, 28, 52, 0.93), rgba(23, 83, 136, 0.76)),
+    url('/content/img/img_s9.jpg') center/cover no-repeat;
+}
+
+.contact-header::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(241, 177, 82, 0.85), transparent);
+}
+
+.contact-shell {
+  width: min(116rem, calc(100% - 3.2rem));
+  margin: 0 auto;
+}
+
+.contact-hero {
+  padding: 7rem 0 10rem;
+  max-width: 72rem;
+  color: #fff;
+}
+
+.hero-kicker,
+.section-label {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #76b4ff;
+}
+
+.contact-hero h1 {
+  margin: 1.4rem 0;
+  font-size: clamp(4.1rem, 7vw, 6.4rem);
+  line-height: 0.96;
+}
+
+.contact-hero p:last-child {
+  max-width: 60rem;
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.contact-main {
+  background:
+    radial-gradient(circle at top left, rgba(118, 180, 255, 0.12), transparent 22%),
+    linear-gradient(180deg, #f4f8fc 0%, #edf3f8 48%, #f9fbfd 100%);
+  padding: 5rem 0 9rem;
+}
+
+.contact-hub {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.4rem;
+}
+
+.contact-option {
+  min-height: 34rem;
+  padding: 3.2rem;
+  border-radius: 3rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2.6rem 6rem rgba(11, 49, 82, 0.14);
+}
+
+.contact-option::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 60%);
+}
+
+.contact-option > * {
+  position: relative;
+  z-index: 1;
+}
+
+.option-certificate {
+  background:
+    linear-gradient(135deg, rgba(10, 31, 55, 0.95), rgba(13, 77, 127, 0.72)),
+    url('/content/img/img_s8.jpg') center/cover no-repeat;
+}
+
+.option-feedback {
+  background:
+    linear-gradient(135deg, rgba(11, 24, 54, 0.96), rgba(28, 61, 106, 0.78)),
+    url('/content/img/img_s10.jpg') center/cover no-repeat;
+}
+
+.contact-option h2 {
+  margin: 1.2rem 0;
+  font-size: clamp(3rem, 4.5vw, 4.8rem);
+  line-height: 1;
+}
+
+.contact-option p:not(.section-label) {
+  max-width: 42rem;
+  font-size: 1.75rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.option-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.4rem;
+  padding: 1.3rem 2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+.option-link:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+@media (max-width: 900px) {
+  .contact-hero {
+    padding: 5.6rem 0 8rem;
+  }
+
+  .contact-hub {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-option {
+    min-height: 0;
+    padding: 2.6rem;
+  }
+}

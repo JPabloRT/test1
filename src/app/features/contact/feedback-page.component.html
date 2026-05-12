@@ -1,0 +1,61 @@
+<header class="contact-header">
+  <div class="contact-shell">
+    <app-site-header />
+
+    <section class="contact-hero feedback-hero">
+      <p class="hero-kicker">Canal de atención</p>
+      <h1>Quejas, sugerencias o felicitaciones</h1>
+      <p>
+        Si deseas hacernos llegar tus comentarios sobre el servicio recibido,
+        llena el siguiente formulario.
+      </p>
+    </section>
+  </div>
+</header>
+
+<main class="contact-main">
+  <section class="contact-shell">
+    <form class="form-card" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="field-grid field-grid-double">
+        <input type="text" placeholder="Nombre" formControlName="name" />
+        <input type="text" placeholder="Empresa" formControlName="company" />
+        <input type="text" placeholder="Teléfono" formControlName="phone" />
+        <input type="email" placeholder="Email" formControlName="email" />
+      </div>
+
+      <input
+        class="full-width"
+        type="text"
+        placeholder="Motivo de su comentario"
+        formControlName="subject"
+      />
+      <textarea
+        class="full-width"
+        rows="5"
+        placeholder="Déjanos un comentario"
+        formControlName="comments"
+      ></textarea>
+
+      @if (error()) {
+        <p class="error-message">{{ error() }}</p>
+      }
+
+      @if (sent()) {
+        <p class="success-message">
+          Gracias por compartirnos tu comentario. Nuestro equipo lo revisará.
+        </p>
+      }
+
+      <button type="submit" class="submit-button" [disabled]="form.invalid || loading()">
+        {{ loading() ? 'Enviando...' : 'Enviar' }}
+      </button>
+
+      <p class="note-copy">
+        <strong>Nota:</strong> Toda reclamación recibida será atendida de
+        acuerdo con el procedimiento correspondiente del organismo.
+      </p>
+    </form>
+  </section>
+</main>
+
+<app-site-footer />
