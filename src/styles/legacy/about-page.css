@@ -306,7 +306,7 @@ nav a {
 .catalog-track {
   position: relative;
   overflow: hidden;
-  height: 76rem;
+  height: 82rem;
   padding: 1rem 0;
 }
 
@@ -653,7 +653,7 @@ footer::before {
   }
 
   .catalog-track {
-    height: 62rem;
+    height: 68rem;
   }
 
   .catalog-info {
@@ -763,7 +763,7 @@ footer::before {
   }
 
   .catalog-track {
-    height: 52rem;
+    height: 56rem;
   }
 
   .catalog-info {
@@ -856,7 +856,7 @@ footer::before {
   }
 
   .catalog-track {
-    height: 40rem;
+    height: 46rem;
   }
 
   .catalog-control {

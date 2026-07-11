@@ -1,7 +1,6 @@
 @import '../../../../styles/legacy/about-page.css';
 
 .catalog-card {
-  overflow: hidden;
 }
 
 .catalog-card::before {
@@ -11,8 +10,8 @@
   background: linear-gradient(
     180deg,
     rgba(0, 16, 39, 0.02) 0%,
-    rgba(0, 16, 39, 0.15) 50%,
-    rgba(0, 16, 39, 0.92) 100%
+    rgba(0, 16, 39, 0.25) 55%,
+    rgba(0, 16, 39, 0.94) 100%
   );
   z-index: 1;
 }
@@ -23,8 +22,8 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  padding: 3rem 2.4rem 2.4rem;
+  gap: 1.6rem;
+  padding: 4rem 2.8rem 3rem;
   text-align: left;
 }
 
@@ -56,7 +55,8 @@
 
 .catalog-card.is-left .catalog-card-copy,
 .catalog-card.is-right .catalog-card-copy {
-  padding: 2rem 1.6rem 1.6rem;
+  padding: 2.4rem 1.8rem 2rem;
+  gap: 1rem;
 }
 
 .catalog-card.is-left .catalog-card-copy h3,
@@ -77,8 +77,8 @@
 
 @media (max-width: 768px) {
   .catalog-card-copy {
-    padding: 2rem 1.6rem 1.8rem;
-    gap: 0.8rem;
+    padding: 2.4rem 1.6rem 2rem;
+    gap: 1rem;
   }
 
   .catalog-card-copy h3 {
