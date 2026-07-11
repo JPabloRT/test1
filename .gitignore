@@ -1,0 +1,25 @@
+node_modules/
+dist/
+.angular/
+
+# Environment files (API keys, secrets)
+.env
+.env.local
+src/environments/environment.local.ts
+src/environments/environment.secrets.ts
+
+# Supabase local development
+supabase/.temp/
+
+# Logs
+*.log
+*.tmp
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

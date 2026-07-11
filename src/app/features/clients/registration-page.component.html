@@ -1,0 +1,55 @@
+<header class="contact-header">
+  <div class="contact-shell">
+    <app-site-header />
+
+    <section class="contact-hero">
+      <p class="hero-kicker">Registro</p>
+      <h1>Solicita tu acceso al portal</h1>
+      <p>
+        Completa el formulario y nuestro equipo te registrará para que puedas
+        acceder al portal de clientes.
+      </p>
+    </section>
+  </div>
+</header>
+
+<main class="contact-main">
+  <section class="contact-shell">
+    <form class="form-card" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="field-grid field-grid-double">
+        <input type="text" placeholder="Nombre completo" formControlName="name" />
+        <input type="text" placeholder="Empresa" formControlName="company" />
+        <input type="text" placeholder="Teléfono" formControlName="phone" />
+        <input type="email" placeholder="Correo electrónico" formControlName="email" />
+      </div>
+
+      <textarea
+        class="full-width"
+        rows="4"
+        placeholder="Comentarios o notas adicionales (opcional)"
+        formControlName="comments"
+      ></textarea>
+
+      @if (error()) {
+        <p class="error-message">{{ error() }}</p>
+      }
+
+      @if (sent()) {
+        <p class="success-message">
+          Gracias por tu solicitud. Nuestro equipo revisará tus datos y te
+          enviaremos las instrucciones de acceso al correo proporcionado.
+        </p>
+      }
+
+      <button type="submit" class="submit-button" [disabled]="form.invalid || loading()">
+        {{ loading() ? 'Enviando...' : 'Solicitar registro' }}
+      </button>
+
+      <p class="note-copy">
+        ¿Ya tienes cuenta? <a class="login-link" routerLink="/clients">Inicia sesión aquí</a>.
+      </p>
+    </form>
+  </section>
+</main>
+
+<app-site-footer />

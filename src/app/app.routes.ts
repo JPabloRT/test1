@@ -4,6 +4,7 @@ import { AboutPageComponent } from './features/about/about-page.component';
 import { CertificateStatusPageComponent } from './features/contact/certificate-status-page.component';
 import { ClientPortalPageComponent } from './features/client-portal/client-portal-page.component';
 import { ClientsPageComponent } from './features/clients/clients-page.component';
+import { RegistrationPageComponent } from './features/clients/registration-page.component';
 import { ContactPageComponent } from './features/contact/contact-page.component';
 import { FeedbackPageComponent } from './features/contact/feedback-page.component';
 import { HomePageComponent } from './features/home/home-page.component';
@@ -27,6 +28,7 @@ export const routes: Routes = [
   },
   { path: 'news', component: NewsPageComponent, title: 'Noticias | Normalitec SC' },
   { path: 'clients', component: ClientsPageComponent, title: 'Clientes | Normalitec SC' },
+  { path: 'clients/register', component: RegistrationPageComponent, title: 'Registro | Normalitec SC' },
   {
     path: 'portal-clientes',
     component: ClientPortalPageComponent,

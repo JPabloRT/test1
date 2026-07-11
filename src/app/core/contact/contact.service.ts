@@ -23,6 +23,14 @@ export interface FeedbackRequestPayload {
   comments: string;
 }
 
+export interface RegistrationRequestPayload {
+  name: string;
+  company: string;
+  phone: string;
+  email: string;
+  comments: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class ContactService {
   private readonly supabase = createClient(
@@ -66,6 +74,27 @@ export class ContactService {
         ok: false,
         message:
           'No fue posible enviar tu comentario en este momento. Intenta nuevamente.',
+      };
+    }
+
+    return { ok: true };
+  }
+
+  async submitRegistrationRequest(
+    payload: RegistrationRequestPayload,
+  ): Promise<{ ok: true } | { ok: false; message: string }> {
+    const { error } = await this.supabase.functions.invoke(
+      'registration-request',
+      {
+        body: payload,
+      },
+    );
+
+    if (error) {
+      return {
+        ok: false,
+        message:
+          'No fue posible enviar tu solicitud de registro en este momento. Intenta nuevamente.',
       };
     }
 

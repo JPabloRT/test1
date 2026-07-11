@@ -23,6 +23,7 @@ Supabase y enviar una notificacion al buzon compartido
 - `MS_SENDER_USER_ID`
 - `STATUS_MAILBOX_ADDRESS`
 - `FEEDBACK_MAILBOX_ADDRESS`
+- `REGISTRATION_MAILBOX_ADDRESS`
 
 ## Recomendacion de valores
 
@@ -53,3 +54,19 @@ una Application Access Policy en Exchange Online si lo considera necesario.
 El mismo patron aplica para reclamaciones, sugerencias o felicitaciones usando
 `ntec.feedback_requests` y el buzon
 `quejasycomentarios@normalitec.com.mx`.
+
+## Solicitudes de registro de clientes
+
+Archivos:
+- `supabase/sql/registration_requests.sql`
+- `supabase/functions/registration-request/index.ts`
+
+Secret adicional requerido:
+- `REGISTRATION_MAILBOX_ADDRESS`
+
+Flujo:
+1. El cliente llena el formulario de registro en `/clients/register`
+2. Angular envia los datos a la Edge Function `registration-request`
+3. La Edge Function valida, guarda en `ntec.registration_requests` y envia correo
+4. El equipo administrador recibe la solicitud y crea manualmente el usuario en
+   Supabase Auth usando el correo proporcionado
