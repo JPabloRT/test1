@@ -290,12 +290,12 @@ nav a {
 }
 
 .catalog-carousel {
-  --catalog-card-width: clamp(280px, 30vw, 420px);
-  --catalog-side-gap: 32px;
+  --catalog-card-width: clamp(320px, 36vw, 540px);
+  --catalog-side-gap: 28px;
   --catalog-side-offset: calc(
     var(--catalog-card-width) + var(--catalog-side-gap)
   );
-  --catalog-side-rotate: 22deg;
+  --catalog-side-rotate: 16deg;
   position: relative;
   overflow: hidden;
   padding: 0 5rem 0.4rem;
@@ -306,7 +306,7 @@ nav a {
 .catalog-track {
   position: relative;
   overflow: hidden;
-  height: 64rem;
+  height: 76rem;
   padding: 1rem 0;
 }
 
@@ -333,17 +333,6 @@ nav a {
   height: 100%;
   object-fit: cover;
   border-radius: 0;
-}
-
-.catalog-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 16, 39, 0.02) 0%,
-    rgba(0, 16, 39, 0.12) 100%
-  );
 }
 
 .catalog-card.is-active {
@@ -379,19 +368,19 @@ nav a {
 
 .catalog-card.is-left,
 .catalog-card.is-right {
-  opacity: 0.72;
-  filter: saturate(0.72);
+  opacity: 0.85;
+  filter: saturate(0.85);
   z-index: 3;
 }
 
 .catalog-card.is-left {
   transform: translate(calc(-50% - var(--catalog-side-offset)), 0)
-    rotateY(var(--catalog-side-rotate)) scale(0.86);
+    rotateY(var(--catalog-side-rotate)) scale(0.92);
 }
 
 .catalog-card.is-right {
   transform: translate(calc(-50% + var(--catalog-side-offset)), 0)
-    rotateY(calc(var(--catalog-side-rotate) * -1)) scale(0.86);
+    rotateY(calc(var(--catalog-side-rotate) * -1)) scale(0.92);
 }
 
 .catalog-card.is-hidden {
@@ -657,14 +646,14 @@ footer::before {
   }
 
   .catalog-carousel {
-    --catalog-card-width: clamp(240px, 30vw, 340px);
-    --catalog-side-gap: 20px;
-    --catalog-side-rotate: 18deg;
+    --catalog-card-width: clamp(260px, 32vw, 380px);
+    --catalog-side-gap: 18px;
+    --catalog-side-rotate: 14deg;
     padding: 1rem 4rem 2rem;
   }
 
   .catalog-track {
-    height: 56rem;
+    height: 62rem;
   }
 
   .catalog-info {
@@ -767,14 +756,14 @@ footer::before {
   }
 
   .catalog-carousel {
-    --catalog-card-width: clamp(220px, 38vw, 280px);
-    --catalog-side-gap: 14px;
-    --catalog-side-rotate: 12deg;
+    --catalog-card-width: clamp(240px, 42vw, 320px);
+    --catalog-side-gap: 12px;
+    --catalog-side-rotate: 10deg;
     padding: 1rem 0 2rem;
   }
 
   .catalog-track {
-    height: 46rem;
+    height: 52rem;
   }
 
   .catalog-info {
