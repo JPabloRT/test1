@@ -122,23 +122,19 @@ export class AuthService {
     this.loadingPortalSignal.set(true);
 
     try {
-      const { data: profile, error: profileError } = await this.supabase
-        .schema('ntec')
-        .from('profiles')
-        .select('id_cliente')
-        .eq('id', currentUser.id)
+      const { data: profileRow, error: profileError } = await this.supabase
+        .rpc('get_portal_profile', { p_user_id: currentUser.id })
         .single();
 
-      if (profileError || !profile) {
+      if (profileError || !profileRow) {
         this.portalClientSignal.set(null);
         return;
       }
 
+      const clientId = (profileRow as any).id_cliente;
+
       const { data: client, error: clientError } = await this.supabase
-        .schema('ntec')
-        .from('cliente')
-        .select('id_cliente, nombre, correo, telefono, direccion_sol')
-        .eq('id_cliente', profile.id_cliente)
+        .rpc('get_portal_cliente', { p_id_cliente: clientId })
         .single();
 
       if (clientError || !client) {
@@ -147,58 +143,31 @@ export class AuthService {
       }
 
       const { data: requests, error: requestsError } = await this.supabase
-        .schema('ntec')
-        .from('solicitud')
-        .select(
-          `
-          id_sol,
-          servicio,
-          estatus,
-          etapa_actual,
-          documento (
-            id_doc,
-            tipo,
-            fechas (
-              vigencia
-            )
-          )
-        `,
-        )
-        .eq('id_cliente', client.id_cliente)
-        .order('fecha_ingreso', { ascending: false });
+        .rpc('get_portal_requests', { p_id_cliente: clientId });
 
       if (requestsError) {
         this.portalClientSignal.set(null);
         return;
       }
 
-      const mappedRequests: PortalRequestSummary[] = (requests ?? []).map(
-        (request: any) => {
-          const documentRow = Array.isArray(request.documento)
-            ? request.documento[0]
-            : request.documento;
-          const dateRow = Array.isArray(documentRow?.fechas)
-            ? documentRow.fechas[0]
-            : documentRow?.fechas;
-
-          return {
-            id: request.id_sol,
-            service: request.servicio,
-            status: request.estatus,
-            stage: request.etapa_actual ?? 'Sin etapa',
-            documentId: documentRow?.id_doc ?? 'Sin documento',
-            documentType: documentRow?.tipo ?? 'No definido',
-            expiresOn: dateRow?.vigencia ?? null,
-          };
-        },
+      const mappedRequests: PortalRequestSummary[] = ((requests ?? []) as any[]).map(
+        (row: any) => ({
+          id: row.id_sol,
+          service: row.servicio,
+          status: row.estatus,
+          stage: row.etapa_actual ?? 'Sin etapa',
+          documentId: row.documento_id_doc ?? 'Sin documento',
+          documentType: row.documento_tipo ?? 'No definido',
+          expiresOn: row.fechas_vigencia ?? null,
+        }),
       );
 
       this.portalClientSignal.set({
-        id: client.id_cliente,
-        name: client.nombre,
-        email: client.correo,
-        phone: client.telefono,
-        address: client.direccion_sol,
+        id: (client as any).id_cliente,
+        name: (client as any).nombre,
+        email: (client as any).correo,
+        phone: (client as any).telefono,
+        address: (client as any).direccion_sol,
         requests: mappedRequests,
       });
     } finally {

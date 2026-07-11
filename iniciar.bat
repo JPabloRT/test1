@@ -1,0 +1,6 @@
+@echo off
+echo Instalando dependencias...
+call npm install
+echo Iniciando servidor en http://localhost:4200...
+start http://localhost:4200
+npm start
