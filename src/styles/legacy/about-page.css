@@ -290,12 +290,12 @@ nav a {
 }
 
 .catalog-carousel {
-  --catalog-card-width: clamp(240px, 27vw, 360px);
-  --catalog-side-gap: 26px;
+  --catalog-card-width: clamp(280px, 30vw, 420px);
+  --catalog-side-gap: 32px;
   --catalog-side-offset: calc(
     var(--catalog-card-width) + var(--catalog-side-gap)
   );
-  --catalog-side-rotate: 26deg;
+  --catalog-side-rotate: 22deg;
   position: relative;
   overflow: hidden;
   padding: 0 5rem 0.4rem;
@@ -306,7 +306,7 @@ nav a {
 .catalog-track {
   position: relative;
   overflow: hidden;
-  height: 58rem;
+  height: 64rem;
   padding: 1rem 0;
 }
 
@@ -657,14 +657,14 @@ footer::before {
   }
 
   .catalog-carousel {
-    --catalog-card-width: clamp(200px, 29vw, 290px);
-    --catalog-side-gap: 18px;
-    --catalog-side-rotate: 20deg;
+    --catalog-card-width: clamp(240px, 30vw, 340px);
+    --catalog-side-gap: 20px;
+    --catalog-side-rotate: 18deg;
     padding: 1rem 4rem 2rem;
   }
 
   .catalog-track {
-    height: 50rem;
+    height: 56rem;
   }
 
   .catalog-info {
@@ -767,14 +767,14 @@ footer::before {
   }
 
   .catalog-carousel {
-    --catalog-card-width: clamp(165px, 30vw, 220px);
-    --catalog-side-gap: 12px;
-    --catalog-side-rotate: 14deg;
+    --catalog-card-width: clamp(220px, 38vw, 280px);
+    --catalog-side-gap: 14px;
+    --catalog-side-rotate: 12deg;
     padding: 1rem 0 2rem;
   }
 
   .catalog-track {
-    height: 38rem;
+    height: 46rem;
   }
 
   .catalog-info {
@@ -867,7 +867,7 @@ footer::before {
   }
 
   .catalog-track {
-    height: 30rem;
+    height: 40rem;
   }
 
   .catalog-control {
