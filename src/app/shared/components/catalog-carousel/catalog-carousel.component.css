@@ -8,17 +8,6 @@
   text-align: left;
   background: #001027;
   flex: 1;
-  opacity: 0.6;
-  transition: opacity 400ms ease;
-}
-
-.catalog-card.is-active .catalog-card-copy {
-  opacity: 1;
-}
-
-.catalog-card.is-left .catalog-card-copy,
-.catalog-card.is-right .catalog-card-copy {
-  opacity: 0.8;
 }
 
 .catalog-card-copy h3 {
@@ -26,30 +15,13 @@
   font-weight: 700;
   color: #fff;
   line-height: 1.15;
-}
-
-.catalog-card.is-active .catalog-card-copy h3 {
-  font-size: clamp(2.8rem, 3.2vw, 4.2rem);
-}
-
-.catalog-card.is-left .catalog-card-copy h3,
-.catalog-card.is-right .catalog-card-copy h3 {
-  font-size: clamp(1.8rem, 2vw, 2.6rem);
+  font-size: clamp(2.4rem, 2.8vw, 3.6rem);
 }
 
 .catalog-card-copy p {
   color: rgba(255, 255, 255, 0.92);
   line-height: 1.4;
-}
-
-.catalog-card.is-active .catalog-card-copy p {
-  font-size: clamp(1.4rem, 1.5vw, 1.8rem);
-}
-
-.catalog-card.is-left .catalog-card-copy p,
-.catalog-card.is-right .catalog-card-copy p {
-  font-size: clamp(1rem, 1.1vw, 1.3rem);
-  line-height: 1.3;
+  font-size: clamp(1.3rem, 1.5vw, 1.7rem);
 }
 
 .catalog-inline-btn {
@@ -75,12 +47,12 @@
     gap: 0.8rem;
   }
 
-  .catalog-card.is-active .catalog-card-copy h3 {
-    font-size: clamp(2.4rem, 3.5vw, 3.4rem);
+  .catalog-card-copy h3 {
+    font-size: clamp(2rem, 3vw, 3rem);
   }
 
-  .catalog-card.is-active .catalog-card-copy p {
-    font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+  .catalog-card-copy p {
+    font-size: clamp(1.2rem, 1.6vw, 1.5rem);
   }
 }
 
@@ -90,22 +62,12 @@
     gap: 0.6rem;
   }
 
-  .catalog-card.is-active .catalog-card-copy h3 {
-    font-size: clamp(2rem, 4.5vw, 2.8rem);
+  .catalog-card-copy h3 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
   }
 
-  .catalog-card.is-active .catalog-card-copy p {
+  .catalog-card-copy p {
     font-size: clamp(1.1rem, 2.4vw, 1.4rem);
-  }
-
-  .catalog-card.is-left .catalog-card-copy h3,
-  .catalog-card.is-right .catalog-card-copy h3 {
-    font-size: clamp(1.4rem, 2.8vw, 2rem);
-  }
-
-  .catalog-card.is-left .catalog-card-copy p,
-  .catalog-card.is-right .catalog-card-copy p {
-    font-size: clamp(0.9rem, 1.6vw, 1.1rem);
   }
 
   .catalog-inline-btn {
