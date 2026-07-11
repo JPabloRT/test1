@@ -7,6 +7,7 @@ dist/
 .env.local
 src/environments/environment.local.ts
 src/environments/environment.secrets.ts
+src/environments/environment.ts
 
 # Supabase local development
 supabase/.temp/
