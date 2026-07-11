@@ -255,38 +255,11 @@ nav a {
   width: min(112rem, calc(100% - 3.2rem));
   margin: 5rem auto 0;
   text-align: center;
-  position: relative;
 }
 
 .our-catalog h2 {
   width: min(840px, 100%);
-  margin: 0 auto 1.6rem;
-  position: relative;
-  z-index: 7;
-  top: auto;
-  left: auto;
-  transform: none;
-}
-
-.circle-carousel-top {
-  width: 102%;
-  height: 180px;
-  border-bottom-left-radius: 50% 100%;
-  border-bottom-right-radius: 50% 100%;
-  background: #fff;
-  position: absolute;
-  z-index: 6;
-}
-
-.circle-carousel-bottom {
-  width: 102%;
-  height: 180px;
-  border-top-left-radius: 50% 100%;
-  border-top-right-radius: 50% 100%;
-  background-color: #fff;
-  position: absolute;
-  bottom: 0;
-  z-index: 6;
+  margin: 0 auto 3rem;
 }
 
 .catalog-carousel {
@@ -712,11 +685,6 @@ footer::before {
 
   .our-catalog h2 {
     margin-bottom: 1.6rem;
-  }
-
-  .circle-carousel-top,
-  .circle-carousel-bottom {
-    display: none;
   }
 
   .catalog-carousel {
