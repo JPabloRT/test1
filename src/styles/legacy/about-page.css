@@ -290,14 +290,13 @@ nav a {
 }
 
 .catalog-carousel {
-  --catalog-card-width: clamp(320px, 36vw, 540px);
-  --catalog-side-gap: 28px;
+  --catalog-card-width: clamp(300px, 34vw, 500px);
+  --catalog-side-gap: 24px;
   --catalog-side-offset: calc(
     var(--catalog-card-width) + var(--catalog-side-gap)
   );
-  --catalog-side-rotate: 16deg;
+  --catalog-side-rotate: 18deg;
   position: relative;
-  overflow: hidden;
   padding: 0 5rem 0.4rem;
   perspective: 1500px;
   width: 100%;
@@ -306,7 +305,7 @@ nav a {
 .catalog-track {
   position: relative;
   height: auto;
-  min-height: 60rem;
+  min-height: 58rem;
   padding: 1rem 0;
 }
 
@@ -316,7 +315,6 @@ nav a {
   left: 50%;
   width: var(--catalog-card-width);
   height: auto;
-  min-height: 54rem;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -332,14 +330,14 @@ nav a {
 
 .catalog-card img {
   width: 100%;
-  flex: 1;
-  min-height: 20rem;
+  height: 28rem;
+  flex-shrink: 0;
   object-fit: cover;
   border-radius: 0;
 }
 
 .catalog-card.is-active {
-  transform: translate(-50%, 0) rotateY(0deg) scale(1.01);
+  transform: translate(-50%, 0) rotateY(0deg) scale(1);
   opacity: 1;
   filter: none;
   z-index: 4;
@@ -371,19 +369,19 @@ nav a {
 
 .catalog-card.is-left,
 .catalog-card.is-right {
-  opacity: 0.85;
-  filter: saturate(0.85);
+  opacity: 0.9;
+  filter: saturate(0.9);
   z-index: 3;
 }
 
 .catalog-card.is-left {
   transform: translate(calc(-50% - var(--catalog-side-offset)), 0)
-    rotateY(var(--catalog-side-rotate)) scale(0.92);
+    rotateY(var(--catalog-side-rotate)) scale(0.9);
 }
 
 .catalog-card.is-right {
   transform: translate(calc(-50% + var(--catalog-side-offset)), 0)
-    rotateY(calc(var(--catalog-side-rotate) * -1)) scale(0.92);
+    rotateY(calc(var(--catalog-side-rotate) * -1)) scale(0.9);
 }
 
 .catalog-card.is-hidden {
@@ -649,14 +647,18 @@ footer::before {
   }
 
   .catalog-carousel {
-    --catalog-card-width: clamp(260px, 32vw, 380px);
-    --catalog-side-gap: 18px;
+    --catalog-card-width: clamp(240px, 30vw, 350px);
+    --catalog-side-gap: 16px;
     --catalog-side-rotate: 14deg;
     padding: 1rem 4rem 2rem;
   }
 
   .catalog-track {
-    min-height: 68rem;
+    min-height: 60rem;
+  }
+
+  .catalog-card img {
+    height: 24rem;
   }
 
   .catalog-info {
@@ -759,14 +761,18 @@ footer::before {
   }
 
   .catalog-carousel {
-    --catalog-card-width: clamp(240px, 42vw, 320px);
-    --catalog-side-gap: 12px;
+    --catalog-card-width: clamp(220px, 40vw, 290px);
+    --catalog-side-gap: 10px;
     --catalog-side-rotate: 10deg;
     padding: 1rem 0 2rem;
   }
 
   .catalog-track {
-    min-height: 56rem;
+    min-height: 50rem;
+  }
+
+  .catalog-card img {
+    height: 22rem;
   }
 
   .catalog-info {
@@ -859,7 +865,11 @@ footer::before {
   }
 
   .catalog-track {
-    min-height: 46rem;
+    min-height: 44rem;
+  }
+
+  .catalog-card img {
+    height: 20rem;
   }
 
   .catalog-control {
