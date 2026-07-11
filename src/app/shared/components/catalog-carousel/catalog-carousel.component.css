@@ -55,8 +55,7 @@
 
 .catalog-card.is-left .catalog-card-copy,
 .catalog-card.is-right .catalog-card-copy {
-  padding: 2.4rem 1.8rem 2rem;
-  gap: 1rem;
+  padding: 2rem 1.8rem;
 }
 
 .catalog-card.is-left .catalog-card-copy h3,
@@ -66,8 +65,7 @@
 
 .catalog-card.is-left .catalog-card-copy p,
 .catalog-card.is-right .catalog-card-copy p {
-  font-size: clamp(1.3rem, 1.4vw, 1.6rem);
-  max-width: 36rem;
+  display: none;
 }
 
 .catalog-card.is-left .catalog-inline-btn,
