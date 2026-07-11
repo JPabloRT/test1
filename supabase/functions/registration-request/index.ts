@@ -140,30 +140,27 @@ Deno.serve(async (request) => {
       comments: rawPayload.comments?.trim() || '',
     };
 
-    const { data: insertedRequest, error: insertError } = await supabaseAdmin
-      .schema('ntec')
-      .from('registration_requests')
-      .insert({
-        nombre: payload.name,
-        empresa: payload.company,
-        telefono: payload.phone,
-        email: payload.email,
-        comentarios: payload.comments,
-        estado: 'recibido',
-      })
-      .select('id')
-      .single();
+    const { data: insertedId, error: insertError } = await supabaseAdmin.rpc(
+      'insert_registration_request',
+      {
+        p_nombre: payload.name,
+        p_empresa: payload.company,
+        p_telefono: payload.phone,
+        p_email: payload.email,
+        p_comentarios: payload.comments || '',
+      },
+    );
 
-    if (insertError || !insertedRequest) {
+    if (insertError || !insertedId) {
       throw new Error('No fue posible guardar la solicitud de registro en Supabase.');
     }
 
-    await sendNotificationEmail(payload, insertedRequest.id);
+    await sendNotificationEmail(payload, insertedId);
 
     return new Response(
       JSON.stringify({
         ok: true,
-        id: insertedRequest.id,
+        id: insertedId,
       }),
       {
         headers: {

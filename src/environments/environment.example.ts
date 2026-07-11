@@ -1,4 +1,4 @@
 export const environment = {
-  supabaseUrl: 'https://tu-proyecto.supabase.co',
+  supabaseUrl: 'https://uuunmfghouakhtaxikhc.supabase.co',
   supabaseAnonKey: 'tu-anon-key-publica-aqui',
 };

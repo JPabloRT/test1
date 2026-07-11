@@ -153,34 +153,31 @@ Deno.serve(async (request) => {
       comments: rawPayload.comments?.trim() || '',
     };
 
-    const { data: insertedRequest, error: insertError } = await supabaseAdmin
-      .schema('ntec')
-      .from('certificate_status_requests')
-      .insert({
-        nombre: payload.name,
-        empresa: payload.company,
-        telefono: payload.phone,
-        email: payload.email,
-        titular_certificado: payload.holder,
-        numero_certificado: payload.certificateNumber,
-        fecha_emision_certificado: payload.issueDate,
-        norma_certificada: payload.standard,
-        comentarios: payload.comments,
-        estado: 'recibido',
-      })
-      .select('id')
-      .single();
+    const { data: insertedId, error: insertError } = await supabaseAdmin.rpc(
+      'insert_certificate_status_request',
+      {
+        p_nombre: payload.name,
+        p_empresa: payload.company,
+        p_telefono: payload.phone,
+        p_email: payload.email,
+        p_titular: payload.holder,
+        p_numero_cert: payload.certificateNumber,
+        p_fecha_emision: payload.issueDate,
+        p_norma: payload.standard,
+        p_comentarios: payload.comments || '',
+      },
+    );
 
-    if (insertError || !insertedRequest) {
+    if (insertError || !insertedId) {
       throw new Error('No fue posible guardar la solicitud en Supabase.');
     }
 
-    await sendNotificationEmail(payload, insertedRequest.id);
+    await sendNotificationEmail(payload, insertedId);
 
     return new Response(
       JSON.stringify({
         ok: true,
-        id: insertedRequest.id,
+        id: insertedId,
       }),
       {
         headers: {

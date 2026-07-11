@@ -1,13 +1,11 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import {
   AuthChangeEvent,
   AuthSession,
-  createClient,
   Session,
-  SupabaseClient,
   User,
 } from '@supabase/supabase-js';
-import { environment } from '../../../environments/environment';
+import { SupabaseService } from '../supabase.service';
 
 export interface PortalRequestSummary {
   id: string;
@@ -32,10 +30,7 @@ type AuthResult = { ok: true } | { ok: false; message: string };
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly supabase: SupabaseClient = createClient(
-    environment.supabaseUrl,
-    environment.supabaseAnonKey,
-  );
+  private readonly supabase = inject(SupabaseService).client;
 
   private readonly sessionSignal = signal<Session | null>(null);
   private readonly userSignal = signal<User | null>(null);

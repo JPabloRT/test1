@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
-import { createClient } from '@supabase/supabase-js';
-import { environment } from '../../../environments/environment';
+import { Injectable, inject } from '@angular/core';
+import { SupabaseService } from '../supabase.service';
 
 export interface CertificateStatusRequestPayload {
   name: string;
@@ -33,10 +32,7 @@ export interface RegistrationRequestPayload {
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
-  private readonly supabase = createClient(
-    environment.supabaseUrl,
-    environment.supabaseAnonKey,
-  );
+  private readonly supabase = inject(SupabaseService).client;
 
   async submitCertificateStatusRequest(
     payload: CertificateStatusRequestPayload,
@@ -83,7 +79,7 @@ export class ContactService {
   async submitRegistrationRequest(
     payload: RegistrationRequestPayload,
   ): Promise<{ ok: true } | { ok: false; message: string }> {
-    const { error } = await this.supabase.functions.invoke(
+    const { data, error } = await this.supabase.functions.invoke(
       'registration-request',
       {
         body: payload,
